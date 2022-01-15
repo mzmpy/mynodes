@@ -5,9 +5,10 @@
 </template>
 
 <script>
-  import * as monaco from 'monaco-editor';
+  import { defineComponent } from 'vue'
+  import * as monaco from 'monaco-editor'
 
-  export default {
+  export default defineComponent({
     name: 'MonacoEditor',
 
     emits: ['codeChanged'],
@@ -17,39 +18,39 @@
         changed: false,
         innerStyle: {
           width: '100%',
-          height: '100%',
+          height: '100%'
         },
-        code: '',
-      };
+        code: ''
+      }
     },
 
     methods: {
       getCode() {
-        return this.editor.getValue();
+        return this.editor.getValue()
       }
     },
 
     watch: {
       code(val, oldVal) {
         if(val !== oldVal) {
-          this.$emit('codeChanged', val);
+          this.$emit('codeChanged', val)
         }
-      },
+      }
     },
 
     mounted() {
       this.editor = monaco.editor.create(this.$refs.monacoEditor, {
-        value: '## There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
+        value: '# There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
         theme: 'vs-dark',
         automaticLayout: true,
-        language: 'maekdown',
-      });
+        language: 'maekdown'
+      })
 
       this.editor.onDidChangeModelContent(() => {
-        this.code = this.getCode();
-      });
-    },
-  };
+        this.code = this.getCode()
+      })
+    }
+  })
 </script>
 
 <style>

@@ -27,11 +27,7 @@
           <div :style="{ overflow: 'auto', height: '100%', background: '#fff' }">
             <div
              :style="{ width: '100%', height: '50%', overflow: 'hidden', padding: '15px 15px 0 15px' }">
-              <div
-              class="markdown-body"
-               ref="markdown"
-               :style="{ width: '100%', height: '100%', border: '1px solid black', overflow: 'auto', background: '#fff', textAlign: 'left', padding: '15px' }">
-              </div>
+             <marked-pad :content="markdown"/>
             </div>
             <monaco-editor :style="{ height: '50%', padding: '15px' }" @codeChanged="onCodeChanged"></monaco-editor>
           </div>
@@ -47,92 +43,87 @@
 </template>
 
 <script>
-  import { defineComponent, ref } from 'vue';
-  import MonacoEditor from '../editor/editor';
-  import 'highlight.js/styles/github-dark.css';
-  import 'github-markdown-css/notes-dark.css';
-  import markIt from '@/corejs/markdown';
-  import 'katex/dist/katex.css';
+  import { defineComponent, ref } from 'vue'
+  import MonacoEditor from '../editor/editor.vue'
+  import markedPad from '../markedPad/markedPad.vue'
 
   export default defineComponent({
     data() {
       return {
+        markdown: '# There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
         footer: {
           display: 'none',
           margin: '10px 0',
           padding: 0,
-          textAlign: 'center',
+          textAlign: 'center'
         },
         divDisplay: {
           display: 'block',
+          flex: '0 0 auto'
         },
         sider: {
           height: '100%',
           overflow: 'auto',
           backgroundColor: '#ffffff',
-          position: 'relative',
+          position: 'relative'
         },
         siderWidth: '300px',
-        dragStartX: null,
+        dragStartX: null
       }
     },
 
     setup() {
       return {
         selectedKeys: ref(['4']),
-        menuCount: 7,
-      };
-    },
-
-    mounted() {
-      (async () => {
-        this.$refs.markdown.innerHTML = await markIt('## There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。');
-      })();
+        menuCount: 7
+      }
     },
 
     components: {
       MonacoEditor,
+      markedPad
     },
 
     methods: {
       footerBtnHlr() {
-        this.footer.display = 'block';
-        this.divDisplay.display = 'none';
+        this.footer.display = 'block'
+        this.divDisplay.display = 'none'
       },
 
       footerHlr() {
-        this.footer.display = 'none';
-        this.divDisplay.display = 'block';
+        this.footer.display = 'none'
+        this.divDisplay.display = 'block'
       },
 
       onMouseMove(moveEvent) {
         new Promise((resolve) => {
-          resolve(moveEvent.clientX);
+          resolve(moveEvent.clientX)
         }).then((dragCurrentX) => {
-          this.siderWidth = (parseFloat(this.siderWidth) + (dragCurrentX - this.dragStartX)) + 'px';
+          this.siderWidth = (parseFloat(this.siderWidth) + (dragCurrentX - this.dragStartX)) + 'px'
           this.dragStartX = dragCurrentX;
         }).catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
       },
 
       onMouseUp() {
-        document.removeEventListener('mousemove', this.onMouseMove);
-        document.removeEventListener('mouseup', this.onMouseUp);
+        document.removeEventListener('mousemove', this.onMouseMove)
+        document.removeEventListener('mouseup', this.onMouseUp)
       },
 
       changeSiderWidth(downEvent) {
-        this.dragStartX = downEvent.clientX;
+        this.dragStartX = downEvent.clientX
 
-        document.addEventListener('mousemove', this.onMouseMove);
-        document.addEventListener('mouseup', this.onMouseUp);
+        document.addEventListener('mousemove', this.onMouseMove)
+        document.addEventListener('mouseup', this.onMouseUp)
       },
 
-      async onCodeChanged(val) {
-        this.$refs.markdown.innerHTML = await markIt(val);
+      onCodeChanged(val) {
+        this.markdown = val
+        console.log(this.markdown)
       }
-    },
-  });
+    }
+  })
 </script>
 
 <style>
