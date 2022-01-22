@@ -26,8 +26,12 @@
         <a-layout-content :style="{ height: '100%', overflow: 'auto', marginLeft: '10px' }">
           <div :style="{ overflow: 'auto', height: '100%', background: '#fff' }">
             <div
-             :style="{ width: '100%', height: '50%', overflow: 'hidden', padding: '15px 15px 0 15px' }">
-             <marked-pad :content="markdown"/>
+             :style="{ width: '100%', height: '50%', overflow: 'hidden', padding: '15px 15px 0 15px' }"
+            >
+             <marked-pad
+              :style="{ width: '100%', height: '100%', border: '1px solid black', overflow: 'auto', textAlign: 'left', padding: '15px' }"
+              :content="markdown"
+             />
             </div>
             <monaco-editor :style="{ height: '50%', padding: '15px' }" @codeChanged="onCodeChanged"></monaco-editor>
           </div>
