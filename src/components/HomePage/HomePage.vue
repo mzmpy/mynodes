@@ -124,7 +124,6 @@
 
       onCodeChanged(val) {
         this.markdown = val
-        console.log(this.markdown)
       }
     }
   })
