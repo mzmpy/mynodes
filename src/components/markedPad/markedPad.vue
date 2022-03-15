@@ -8,7 +8,7 @@
 <script>
   import { defineComponent } from 'vue'
   import 'highlight.js/styles/github-dark.css'
-  import 'github-markdown-css/mynotes-markdown-dark.css'
+  import '../../assets/css/mynotes-markdown-dark.css'
   import markIt from './corejs/markdown'
   import 'katex/dist/katex.css'
   
