@@ -54,7 +54,7 @@
   export default defineComponent({
     data() {
       return {
-        markdown: '# There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
+        markdown: '# There are some demos.\n\nThis is a paragraph.\n\nThere are some Greek letter `$\\alpha$`, `$\\beta$` and `$\\lambda$`.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
         footer: {
           display: 'none',
           margin: '10px 0',
