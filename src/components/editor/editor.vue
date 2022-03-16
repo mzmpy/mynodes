@@ -43,7 +43,7 @@
         value: '# There are some demos.\n\nThis is a paragraph.\n\n```latex\nE = mc^2\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。',
         theme: 'vs-dark',
         automaticLayout: true,
-        language: 'maekdown'
+        language: 'markdown'
       })
 
       this.editor.onDidChangeModelContent(() => {
