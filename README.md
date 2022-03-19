@@ -28,7 +28,7 @@ npm run lint
 
 ## 技术栈
 * [vue](https://v3.cn.vuejs.org/): 版本3.0.0
-* [ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn): 版本2.2.8 link
+* [ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn): 版本2.2.8
 * [monaco-editor](https://microsoft.github.io/monaco-editor/): 版本0.29.1
 * [marked](https://marked.js.org/): 版本3.0.8
 * [katex](https://katex.org/docs/options.html): 版本0.15.1
