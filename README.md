@@ -24,7 +24,7 @@ npm run lint
 
 我们希望写一个即时渲染的 `markdown(katex)` 写作板，能够完成渲染通用的 `markdown` 语法并且可导出 `pdf` 格式的文件（现在只初步实现了渲染的功能），同时它应该具有本地后台服务的功能，可以在界面左侧打开文件夹（通过文件树的形式实现），点击其中的文件可以在编辑器中打开该文件。这是目前 `TO DO` 的内容，未来还有更多的功能加入。
 
-![avatar](devResource\pictures\Snipaste_2022-03-19_10-55-01.png)
+![avatar](/devResource/pictures/Snipaste_2022-03-19_10-55-01.png)
 
 ## 技术栈
 * [vue](https://v3.cn.vuejs.org/): 版本3.0.0
