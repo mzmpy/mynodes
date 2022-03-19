@@ -89,6 +89,7 @@
     },
 
     methods: {
+      /** 处理页面页脚的隐藏和展示 */
       footerBtnHlr() {
         this.footer.display = 'block'
         this.divDisplay.display = 'none'
@@ -98,7 +99,10 @@
         this.footer.display = 'none'
         this.divDisplay.display = 'block'
       },
+      /** */
 
+      /** 处理左侧栏的拖动 */
+      // 使左侧栏的右边框随鼠标移动
       onMouseMove(moveEvent) {
         new Promise((resolve) => {
           resolve(moveEvent.clientX)
@@ -115,12 +119,14 @@
         document.removeEventListener('mouseup', this.onMouseUp)
       },
 
+      // .after-sider元素的mousedown事件
       changeSiderWidth(downEvent) {
         this.dragStartX = downEvent.clientX
 
         document.addEventListener('mousemove', this.onMouseMove)
         document.addEventListener('mouseup', this.onMouseUp)
       },
+      /** */
 
       onCodeChanged(val) {
         this.markdown = val
